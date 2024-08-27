@@ -41,7 +41,7 @@ def run_sync_simple_client(comm, host, port, framer=FramerType.SOCKET, registers
 
     # print("connect to server")
     client.connect()
-    version = client.read_holding_registers(7816,1)
+    version = client.read_holding_registers(7819,2)
     print(int(hex(version.registers[0])[:3], 16))
     
     print(version.registers)

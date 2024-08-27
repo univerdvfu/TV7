@@ -61,18 +61,21 @@ def run_sync_simple_client(comm, host, port, framer=FramerType.SOCKET, registers
          version = "2.21"
     else:
         version = "2.19"
-    
+    print(key_name_rigister)
     # print("get and verify data")
     for key in key_name_rigister:
         try:
+            
             print(data_registers[f"{key}"]["registers"][f"{version}"]+registers_name_kist[f"{key}"]*2)
             data = client.read_holding_registers(data_registers[f"{key}"]["registers"][f"{version}"]+registers_name_kist[f"{key}"]*2, data_registers[f"{key}"]["data_type"]["bit"] )
+            print(data.registers)
             if data_registers[f"{key}"]["data_type"]["type"] == "float":
                 registers_name_kist[key] = hex_to_float(data.registers)
             elif data_registers[f"{key}"]["data_type"]["type"] == "unsigned_short":
                
                 registers_name_kist[key] = f"{int(hex(data.registers[0])[3:], 16)}.{int(hex(data.registers[0])[:3], 16)}"
-                
+            else:
+                pass   
             # rr = client.read_holding_registers(7704,1)
             
             

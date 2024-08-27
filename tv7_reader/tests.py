@@ -7,9 +7,11 @@ for i in range(1):
 
     # Данные, которые будут отправлены в формате JSON
     data = {
-        "volume_consumption": 1,
-        
+    "name": "test",
+    "data": {
+        "temp": 1
     }
+}
 
     # Заголовки запроса
     headers = {
